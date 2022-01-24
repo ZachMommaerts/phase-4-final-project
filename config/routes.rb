@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :items
+  resources :items, only: [:index, :show]
   resources :orders
-  resources :restaurants
-  resources :users
-  
+  resources :restaurants, only: [:index, :show]
+  resources :users, only: [:show, :create, :update, :destroy]
+
   get '*path',
   to: 'fallback#index',
   constraints: ->(req) { !req.xhr? && req.format.html? }
