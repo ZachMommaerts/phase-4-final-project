@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import RenderItem from './RenderItem';
 
-export default function RestaurantDetails() {
+export default function RestaurantDetails({ order, setOrder }) {
     const [ items, setItems ] = useState([])
     const id = useParams();
 
@@ -17,9 +17,9 @@ export default function RestaurantDetails() {
         return(
             <RenderItem
                 key={item.id}
-                name={item.name}
-                description={item.description}
-                price={item.price}
+                item={item}
+                order={order}
+                setOrder={setOrder}
             />
         )
     })
@@ -27,6 +27,9 @@ export default function RestaurantDetails() {
     return(
         <div>
             {renderItems}
+            <Link to={`/order`}>
+                <button>Review Order</button>
+            </Link>
         </div>
     )
 }

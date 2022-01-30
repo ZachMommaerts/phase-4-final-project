@@ -10,13 +10,13 @@ export default function Container() {
     return(
         <>
             <h2>Restaurants nearby</h2>
-            <RestaurantList 
-                restaurants = {filteredRestaurants}
-                setRestaurants = {setRestaurants}
-            />
             <SearchBar 
                 search = {search}
                 setSearch = {setSearch}
+            />
+            <RestaurantList 
+                restaurants = {filteredRestaurants}
+                setRestaurants = {setRestaurants}
             />
         </>
     )
