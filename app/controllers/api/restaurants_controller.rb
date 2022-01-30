@@ -5,7 +5,7 @@ class Api::RestaurantsController < ApplicationController
     end
 
     def show
-        render json: Restaurant.find(params[:id])
+        render json: Restaurant.find(params[:id]), serializer: RestaurantItemsSerializer
     end
     
 end

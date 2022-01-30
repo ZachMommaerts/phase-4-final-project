@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import RestaurantInfo from './RestaurantInfo';
 
 export default function RestaurantList( {restaurants, setRestaurants }) {
@@ -12,10 +13,12 @@ export default function RestaurantList( {restaurants, setRestaurants }) {
 
     const restaurantList = restaurants.map(restaurant => {
         return(
-            <RestaurantInfo 
-                key = {restaurant.id}
-                name = {restaurant.name}
-            />
+            <Link to={`/restaurants/${restaurant.id}`}>
+                <RestaurantInfo 
+                    key = {restaurant.id}
+                    name = {restaurant.name}
+                />
+            </Link>
         )
     })
 
