@@ -1,23 +1,27 @@
 import { useState, useEffect } from 'react';
 import RestaurantInfo from './RestaurantInfo';
 
-export default function RestaurantList() {
-    const [restaurants, setRestaurants] = useState([])
+export default function RestaurantList( {restaurants, setRestaurants }) {
 
     useEffect(() => {
         fetch('/api/restaurants')
         .then(r => r.json())
-        .then(data => console.log(data))
+        .then(data => setRestaurants(data))
         .catch(error => alert(error))
     }, [])
 
     const restaurantList = restaurants.map(restaurant => {
         return(
-            <RestaurantInfo />
+            <RestaurantInfo 
+                key = {restaurant.id}
+                name = {restaurant.name}
+            />
         )
     })
 
     return(
-        {restaurantList}
+        <div>
+            {restaurantList}
+        </div>
     )
 }
